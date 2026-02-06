@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New-Gen Discord Bot Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0f1a;
+      --panel: #121826;
+      --card: #171f2f;
+      --text: #e6e9f5;
+      --muted: #9aa3b2;
+      --accent: #5865f2;
+      --border: #242c3f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 32px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    header p {
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .kpi-title {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    .trend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      min-height: 220px;
+    }
+
+    .panel h3 {
+      font-size: 16px;
+    }
+
+    .placeholder-chart {
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      height: 140px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      background: rgba(88, 101, 242, 0.05);
+    }
+
+    .table-wrapper {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    td {
+      color: var(--text);
+    }
+
+    .tag {
+      background: rgba(88, 101, 242, 0.2);
+      color: var(--accent);
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>New-Gen Discord Bot Dashboard</h1>
+      <p>Assumption: metrics are placeholders until API wiring is defined.</p>
+    </div>
+    <div class="controls">
+      <button class="chip">Last 7 days</button>
+      <button class="chip">All shards</button>
+      <button class="chip">Auto-refresh: Off</button>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-title">Active Servers</span>
+        <span class="kpi-value">—</span>
+        <span class="kpi-sub">TODO: /metrics/servers</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Daily Active Users</span>
+        <span class="kpi-value">—</span>
+        <span class="kpi-sub">TODO: /metrics/dau</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Commands Executed</span>
+        <span class="kpi-value">—</span>
+        <span class="kpi-sub">TODO: /metrics/commands</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-title">Latency P95</span>
+        <span class="kpi-value">—</span>
+        <span class="kpi-sub">TODO: /metrics/latency</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="trend-grid">
+      <div class="panel">
+        <h3>Engagement Trend</h3>
+        <div class="placeholder-chart">Chart placeholder (DAU/MAU)</div>
+        <p class="kpi-title">Wiring point: fetchEngagementTrend()</p>
+      </div>
+      <div class="panel">
+        <h3>Command Volume Trend</h3>
+        <div class="placeholder-chart">Chart placeholder (commands/day)</div>
+        <p class="kpi-title">Wiring point: fetchCommandTrend()</p>
+      </div>
+      <div class="panel">
+        <h3>Latency &amp; Errors</h3>
+        <div class="placeholder-chart">Chart placeholder (p95 + error rate)</div>
+        <p class="kpi-title">Wiring point: fetchHealthTrend()</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="table-wrapper">
+      <h3>Top Guilds Breakdown</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Guild</th>
+            <th>Users</th>
+            <th>Commands</th>
+            <th>Engagement</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="tag">TODO</span></td>
+          </tr>
+          <tr>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="tag">TODO</span></td>
+          </tr>
+          <tr>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="tag">TODO</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Dashboard shell only. Replace placeholders with real data once the metrics API is finalized.
+  </footer>
+</body>
+</html>
